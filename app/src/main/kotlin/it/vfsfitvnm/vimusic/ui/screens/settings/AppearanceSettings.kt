@@ -62,18 +62,18 @@ fun AppearanceSettings() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "外見")
+        Header(title = "Appearence")
 
-        SettingsEntryGroupText(title = "カラー")
+        SettingsEntryGroupText(title = "Color")
 
         EnumValueSelectorSettingsEntry(
-            title = "テーマ",
+            title = "Theme",
             selectedValue = colorPaletteName,
             onValueSelected = { colorPaletteName = it }
         )
 
         EnumValueSelectorSettingsEntry(
-            title = "テーマモード",
+            title = "Theme Mode",
             selectedValue = colorPaletteMode,
             isEnabled = colorPaletteName != ColorPaletteName.PureBlack,
             onValueSelected = { colorPaletteMode = it }
@@ -81,10 +81,11 @@ fun AppearanceSettings() {
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "シェイプ")
+        SettingsEntryGroupText(title = "Shape")
 
         EnumValueSelectorSettingsEntry(
-            title = "画像サムネイル（縮小表示された画像）の角の丸み",
+            // title = "画像サムネイル（縮小表示された画像）の角の丸み",
+            title = "Rounded corners of image thumbnails (reduced images)",
             selectedValue = thumbnailRoundness,
             onValueSelected = { thumbnailRoundness = it },
             trailingContent = {
@@ -99,18 +100,18 @@ fun AppearanceSettings() {
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "テキスト")
+        SettingsEntryGroupText(title = "Text")
 
         SwitchSettingEntry(
-            title = "システムフォントを使う",
-            text = "システムが適用したフォントを使用する",
+            title = "Use System Fonts",
+            text = "Use System-applied fonts",
             isChecked = useSystemFont,
             onCheckedChange = { useSystemFont = it }
         )
 
         SwitchSettingEntry(
-            title = "フォントの余白を適用する",
-            text = "テキストの周りにスペースを追加する",
+            title = "Apply font margins",
+            text = "add space around text",
             isChecked = applyFontPadding,
             onCheckedChange = { applyFontPadding = it }
         )
@@ -118,11 +119,11 @@ fun AppearanceSettings() {
         if (!isAtLeastAndroid13) {
             SettingsGroupSpacer()
 
-            SettingsEntryGroupText(title = "ロックスクリーン")
+            SettingsEntryGroupText(title = "lock screen")
 
             SwitchSettingEntry(
-                title = "曲のアルバムジャケットを表示する",
-                text = "再生中の曲のアルバムジャケットをロックスクリーンの壁紙として使用する",
+                title = "Display a song's album cover",
+                text = "Use the album cover of the currently playing song as your lock screen wallpaper",
                 isChecked = isShowingThumbnailInLockscreen,
                 onCheckedChange = { isShowingThumbnailInLockscreen = it }
             )

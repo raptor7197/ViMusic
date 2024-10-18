@@ -98,36 +98,36 @@ fun OtherSettings() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "その他")
+        Header(title = "Other")
 
         SettingsEntryGroupText(title = "ANDROID AUTO")
 
-        SettingsDescription(text = "Android Autoの開発者設定で「未知のソースを許可」を有効にすることを忘れないでください。")
+        SettingsDescription(text = "Don't forget to enable 'Unknown sources' in the Android Auto developer settings.")
 
         SwitchSettingEntry(
             title = "Android Auto",
-            text = "Android Autoサポートを有効にする",
+            text = "Enable Android Auto support",
             isChecked = isAndroidAutoEnabled,
             onCheckedChange = { isAndroidAutoEnabled = it }
         )
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "検索履歴")
+        SettingsEntryGroupText(title = "SEARCH HISTORY")
 
         SwitchSettingEntry(
-            title = "検索履歴の一時停止",
-            text = "新しい検索クエリを保存せず、履歴を表示しない",
+            title = "Pause search history",
+            text = "Don't save new search queries and don't show history",
             isChecked = pauseSearchHistory,
             onCheckedChange = { pauseSearchHistory = it }
         )
 
         SettingsEntry(
-            title = "検索履歴のクリア",
+            title = "Clear search history",
             text = if (queriesCount > 0) {
-                "$queriesCount 件の検索クエリを削除"
+                "Delete $queriesCount search queries"
             } else {
-                "履歴は空です"
+                "History is empty"
             },
             isEnabled = queriesCount > 0,
             onClick = { query(Database::clearQueries) }
@@ -135,21 +135,21 @@ fun OtherSettings() {
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "サービス寿命")
+        SettingsEntryGroupText(title = "SERVICE LIFESPAN")
 
-        ImportantSettingsDescription(text = "バッテリーの最適化が適用されている場合、一時停止時に再生通知が突然表示されなくなることがあります。")
+        ImportantSettingsDescription(text = "Battery optimization may cause the playback notification to disappear suddenly when paused.")
 
         if (isAtLeastAndroid12) {
-            SettingsDescription(text = "Android 12以降、\"サービスの重要度\" オプションを有効にするには、バッテリーの最適化を無効にする必要があります。")
+            SettingsDescription(text = "To enable the 'Service importance' option on Android 12 and later, you need to disable battery optimization.")
         }
 
         SettingsEntry(
-            title = "バッテリーの最適化を無視",
+            title = "Ignore battery optimization",
             isEnabled = !isIgnoringBatteryOptimizations,
             text = if (isIgnoringBatteryOptimizations) {
-                "既に制限解除済み"
+                "Already ignored"
             } else {
-                "バックグラウンドでの制限を無効にする"
+                "Disable background restrictions"
             },
             onClick = {
                 if (!isAtLeastAndroid6) return@SettingsEntry
@@ -166,15 +166,15 @@ fun OtherSettings() {
                             Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
                         )
                     } catch (e: ActivityNotFoundException) {
-                        context.toast("バッテリーの最適化設定が見つかりませんでした。ViMusicを手動でホワイトリストに登録してください。")
+                        context.toast("Battery optimization settings not found. Please add ViMusic to the whitelist manually.")
                     }
                 }
             }
         )
 
         SwitchSettingEntry(
-            title = "サービスの重要度を変更",
-            text = "バッテリーの最適化だけでは不十分な場合",
+            title = "Change service importance",
+            text = "Not enough with battery optimization",
             isChecked = isInvincibilityEnabled,
             onCheckedChange = { isInvincibilityEnabled = it }
         )

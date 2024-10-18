@@ -58,9 +58,9 @@ fun CacheSettings() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "キャッシュ")
+        Header(title = "Cache")
 
-        SettingsDescription(text = "キャッシュが空き領域を使い果たした場合、古い順からアクセスされていないリソースがクリアされます。")
+        SettingsDescription(text = "When the cache runs out of free space, the oldest least accessed resources are cleared.")
 
         Coil.imageLoader(context).diskCache?.let { diskCache ->
             val diskCacheSize = remember(diskCache) {
@@ -69,7 +69,7 @@ fun CacheSettings() {
 
             SettingsGroupSpacer()
 
-            SettingsEntryGroupText(title = "画像のキャッシュ")
+            SettingsEntryGroupText(title = "image caching")
 
             SettingsDescription(
                 text = "${
@@ -81,7 +81,7 @@ fun CacheSettings() {
             )
 
             EnumValueSelectorSettingsEntry(
-                title = "最大サイズ",
+                title = "Maximum Size",
                 selectedValue = coilDiskCacheMaxSize,
                 onValueSelected = { coilDiskCacheMaxSize = it }
             )
@@ -96,7 +96,7 @@ fun CacheSettings() {
 
             SettingsGroupSpacer()
 
-            SettingsEntryGroupText(title = "曲のキャッシュ")
+            SettingsEntryGroupText(title = "Song cache")
 
             SettingsDescription(
                 text = buildString {
@@ -110,7 +110,7 @@ fun CacheSettings() {
             )
 
             EnumValueSelectorSettingsEntry(
-                title = "最大サイズ",
+                title = "Max Size",
                 selectedValue = exoPlayerDiskCacheMaxSize,
                 onValueSelected = { exoPlayerDiskCacheMaxSize = it }
             )

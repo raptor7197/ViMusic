@@ -94,16 +94,16 @@ fun DatabaseSettings() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "データベース")
+        Header(title = "Database")
 
-        SettingsEntryGroupText(title = "クリーンアップ")
+        SettingsEntryGroupText(title = "clean up")
 
         SettingsEntry(
-            title = "Quick picksをリセットする",
+            title = "Quick Reset picks",
             text = if (eventsCount > 0) {
-                "$eventsCount 個の再生イベントを削除する"
+                "$eventsCount Delete playback events"
             } else {
-                "Quick picksがクリアされました"
+                "Quick picks"
             },
             isEnabled = eventsCount > 0,
             onClick = { query(Database::clearEvents) }
@@ -111,13 +111,13 @@ fun DatabaseSettings() {
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "バックアップ")
+        SettingsEntryGroupText(title = "Backup")
 
-        SettingsDescription(text = "個人の設定（テーマモードなど）とキャッシュは除外されます。")
+        SettingsDescription(text = "Personal Settings")
 
         SettingsEntry(
-            title = "バックアップ",
-            text = "データベースを外部ストレージにエクスポートする",
+            title = "Backup",
+            text = "Export database to external storage",
             onClick = {
                 @SuppressLint("SimpleDateFormat")
                 val dateFormat = SimpleDateFormat("yyyyMMddHHmmss")
@@ -125,27 +125,27 @@ fun DatabaseSettings() {
                 try {
                     backupLauncher.launch("vimusic_${dateFormat.format(Date())}.db")
                 } catch (e: ActivityNotFoundException) {
-                    context.toast("作成するためのアプリケーションが見つかりませんでした")
+                    context.toast("No application found to create the file")
                 }
             }
         )
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "復元")
+        SettingsEntryGroupText(title = "Restore")
 
-        ImportantSettingsDescription(text = "既存のデータは上書きされます。\n${context.applicationInfo.nonLocalizedLabel}  は、データベースの復元後に自動的に閉じられます。")
+        ImportantSettingsDescription(text = "Existing data will be overwritten.\n${context.applicationInfo.nonLocalizedLabel} will automatically close after database restoration.")
 
         SettingsEntry(
-            title = "復元",
-            text = "外部ストレージからデータベースをインポートする",
+            title = "Restore",
+            text = "Import database from external storage",
             onClick = {
                 try {
                     restoreLauncher.launch(
                         arrayOf("application/vnd.sqlite3", "application/octet-stream")
                     )
                 } catch (e: ActivityNotFoundException) {
-                    context.toast("開く為のアプリケーションが見つかりませんでした")
+                    context.toast("No application found to open the file")
                 }
             }
         )

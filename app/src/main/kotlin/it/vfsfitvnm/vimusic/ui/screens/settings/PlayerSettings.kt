@@ -61,13 +61,13 @@ fun PlayerSettings() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "再生と音楽")
+        Header(title = "Playback and Audio")
 
-        SettingsEntryGroupText(title = "再生")
+        SettingsEntryGroupText(title = "Playback")
 
         SwitchSettingEntry(
-            title = "永続的なキュー",
-            text = "再生中の曲を保存および復元する",
+            title = "Persistent Queue",
+            text = "Save and restore the currently playing song",
             isChecked = persistentQueue,
             onCheckedChange = {
                 persistentQueue = it
@@ -76,8 +76,8 @@ fun PlayerSettings() {
 
         if (isAtLeastAndroid6) {
             SwitchSettingEntry(
-                title = "再生を再開",
-                text = "有線またはBluetoothデバイスが接続された場合",
+                title = "Resume Playback",
+                text = "When a wired or Bluetooth device is connected",
                 isChecked = resumePlaybackWhenDeviceConnected,
                 onCheckedChange = {
                     resumePlaybackWhenDeviceConnected = it
@@ -87,11 +87,11 @@ fun PlayerSettings() {
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "音楽")
+        SettingsEntryGroupText(title = "Audio")
 
         SwitchSettingEntry(
-            title = "無音時間",
-            text = "再生中に無音部分をスキップする",
+            title = "Skip Silence",
+            text = "Skip silent parts during playback",
             isChecked = skipSilence,
             onCheckedChange = {
                 skipSilence = it
@@ -99,8 +99,8 @@ fun PlayerSettings() {
         )
 
         SwitchSettingEntry(
-            title = "音量の調整",
-            text = "音量を固定のレベルに調整して偏りを減らす",
+            title = "Volume Normalization",
+            text = "Adjust volume to a fixed level to reduce inconsistencies",
             isChecked = volumeNormalization,
             onCheckedChange = {
                 volumeNormalization = it
@@ -108,8 +108,8 @@ fun PlayerSettings() {
         )
 
         SettingsEntry(
-            title = "イコライザー",
-            text = "システムのイコライザーと連携する",
+            title = "Equalizer",
+            text = "Integrate with system equalizer",
             onClick = {
                 val intent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL).apply {
                     putExtra(AudioEffect.EXTRA_AUDIO_SESSION, binder?.player?.audioSessionId)

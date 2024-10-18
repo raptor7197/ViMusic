@@ -53,12 +53,12 @@ fun SettingsScreen() {
                 tabIndex = tabIndex,
                 onTabChanged = onTabChanged,
                 tabColumnContent = { Item ->
-                    Item(0, "外見", R.drawable.color_palette)
-                    Item(1, "再生", R.drawable.play)
-                    Item(2, "キャッシュ", R.drawable.server)
-                    Item(3, "データベース", R.drawable.server)
-                    Item(4, "その他", R.drawable.shapes)
-                    Item(5, "詳細", R.drawable.information)
+                    Item(0, "Appearance", R.drawable.color_palette)
+                    Item(1, "Playback", R.drawable.play)
+                    Item(2, "Cache", R.drawable.server)
+                    Item(3, "Database", R.drawable.server)
+                    Item(4, "Other", R.drawable.shapes)
+                    Item(5, "About", R.drawable.information)
                 }
             ) { currentTabIndex ->
                 saveableStateHolder.SaveableStateProvider(currentTabIndex) {

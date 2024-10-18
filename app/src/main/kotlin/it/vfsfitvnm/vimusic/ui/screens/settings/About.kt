@@ -37,7 +37,7 @@ fun About() {
                     .asPaddingValues()
             )
     ) {
-        Header(title = "このアプリについて") {
+        Header(title = "About") {
             BasicText(
                 text = "v${BuildConfig.VERSION_NAME} by vfsfitvnm",
                 style = typography.s.secondary
@@ -48,27 +48,28 @@ fun About() {
 
         SettingsEntry(
             title = "GitHub",
-            text = "ソースコードを表示",
+            text = "Source Code",
             onClick = {
-                uriHandler.openUri("https://github.com/vfsfitvnm/ViMusic")
+                uriHandler.openUri("https://github.com/raptor7197/ViMusic")
+                
             }
         )
 
         SettingsGroupSpacer()
 
-        SettingsEntryGroupText(title = "トラブルシューティング")
+        SettingsEntryGroupText(title = "Troubleshooting")
 
         SettingsEntry(
-            title = "問題を報告",
-            text = "GitHub にリダイレクトされます",
+            title = "Report a problem",
+            text = "GitHub redirect",
             onClick = {
                 uriHandler.openUri("https://github.com/vfsfitvnm/ViMusic/issues/new?assignees=&labels=bug&template=bug_report.yaml")
             }
         )
 
         SettingsEntry(
-            title = "機能のリクエストまたはアイデアの提案",
-            text = "GitHub にリダイレクトされます",
+            title = "Request a feature",
+            text = "GitHub redirect",
             onClick = {
                 uriHandler.openUri("https://github.com/vfsfitvnm/ViMusic/issues/new?assignees=&labels=enhancement&template=feature_request.yaml")
             }
